@@ -114,6 +114,8 @@
     cursor: pointer;
     clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
     transition: background 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    display: inline-block;
   }
 
   .nav-cta:hover {
@@ -459,7 +461,6 @@
     letter-spacing: 0.1em;
   }
 
-  /* ── BOTONES WHATSAPP EN CARDS ── */
   .card-wa-btn {
     display: inline-flex;
     align-items: center;
@@ -501,11 +502,7 @@
     color: #fff;
   }
 
-  .card-wa-btn svg {
-    flex-shrink: 0;
-  }
-
-  /* ── FIN BOTONES ── */
+  .card-wa-btn svg { flex-shrink: 0; }
 
   .consoles-section {
     background: rgba(5,5,16,0.5);
@@ -542,17 +539,6 @@
     transform: translateY(-4px);
   }
 
-  .console-icon {
-    font-size: 2rem;
-    margin-bottom: 0.6rem;
-    display: block;
-    filter: grayscale(0.3);
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 0.6rem;
-    object-fit: contain;
-  }
-
   .console-item img {
     width: 80px;
     height: 80px;
@@ -579,14 +565,8 @@
   }
 
   @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .console-name {
@@ -633,10 +613,6 @@
     font-size: 0.9rem;
     color: #6080a0;
     margin-top: 0.5rem;
-  }
-
-  #reservas {
-    max-width: 700px;
   }
 
   .booking-card {
@@ -937,7 +913,6 @@
         <span class="price-amount">$600.000</span>
         <span class="price-label">evento</span>
       </div>
-      <!-- BOTÓN WHATSAPP BÁSICO -->
       <a
         href="https://wa.me/5492993260471?text=Hola!%20Me%20interesa%20el%20combo%20*B%C3%A1sico*%20(%24600.000)%20para%20reservar%20La%20PlayHouse.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8E%AE"
         target="_blank"
@@ -969,9 +944,8 @@
         <span class="price-amount" style="color: var(--magenta); text-shadow: var(--glow-m)">$700.000</span>
         <span class="price-label">evento</span>
       </div>
-      <!-- BOTÓN WHATSAPP COMBO 1 -->
       <a
-        href="https://wa.me/5492993260471?text="Hola, me interesa el combo básico. ¿Tienen disponibilidad para el día [Introducir fecha]? Gracias.
+        href="https://wa.me/5492993260471?text=Hola!%20Me%20interesa%20el%20*Combo%201*%20(%24700.000)%20para%20reservar%20La%20PlayHouse.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8E%AE"
         target="_blank"
         class="card-wa-btn mag-btn"
       >
@@ -988,7 +962,6 @@
     <p class="section-label">arsenal disponible</p>
     <h2 class="section-title">Estaciones de <span>Juego</span></h2>
     <div class="section-divider"></div>
-    <!-- Para poner los logos de las consolas-->
     <div class="consoles-grid">
       <div class="console-item">
         <img src="Logos de las consolas/Playstation5.jpg" alt="PlayStation 5">
@@ -1098,8 +1071,8 @@
       Los cumpleaños crecieron... ahora se juegan 🎮<br>
       Consultá disponibilidad por WhatsApp o redes
     </p>
-    <!-- Arreglar boton-->
-    <a href="https://wa.me/5492993260471?class="whatsapp-btn" target="_blank">
+
+    <a href="https://wa.me/5492993260471?text=Hola!%20Quiero%20hacer%20una%20reserva%20en%20La%20PlayHouse.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8E%AE" class="whatsapp-btn" target="_blank">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.527 5.847L0 24l6.305-1.504A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.044-1.394l-.36-.214-3.742.892.934-3.624-.235-.373A9.755 9.755 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
       Reservar por WhatsApp
     </a>
