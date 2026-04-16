@@ -32,7 +32,6 @@
     overflow-x: hidden;
   }
 
-  /* SCANLINES overlay */
   body::before {
     content: '';
     position: fixed;
@@ -48,7 +47,6 @@
     z-index: 9999;
   }
 
-  /* GRID BG */
   body::after {
     content: '';
     position: fixed;
@@ -61,7 +59,6 @@
     z-index: 0;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -124,7 +121,6 @@
     box-shadow: var(--glow-m);
   }
 
-  /* HERO */
   #hero {
     position: relative;
     min-height: 100vh;
@@ -283,7 +279,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* TICKER */
   .ticker-wrap {
     position: relative;
     z-index: 1;
@@ -317,7 +312,6 @@
     to { transform: translateX(-50%); }
   }
 
-  /* SECTION BASE */
   section {
     position: relative;
     z-index: 1;
@@ -352,7 +346,6 @@
     margin: 1rem 0 3rem;
   }
 
-  /* SERVICES GRID */
   .services-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -466,7 +459,54 @@
     letter-spacing: 0.1em;
   }
 
-  /* CONSOLES */
+  /* ── BOTONES WHATSAPP EN CARDS ── */
+  .card-wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1.2rem;
+    width: 100%;
+    justify-content: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.75rem 1.2rem;
+    border: 1px solid rgba(0,245,255,0.35);
+    color: var(--cyan);
+    background: rgba(0,245,255,0.06);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.22s;
+    cursor: pointer;
+  }
+
+  .card-wa-btn:hover {
+    background: rgba(0,245,255,0.14);
+    border-color: var(--cyan);
+    box-shadow: var(--glow-c);
+    color: #fff;
+  }
+
+  .card-wa-btn.mag-btn {
+    border-color: rgba(255,0,168,0.35);
+    color: var(--magenta);
+    background: rgba(255,0,168,0.06);
+  }
+
+  .card-wa-btn.mag-btn:hover {
+    background: rgba(255,0,168,0.14);
+    border-color: var(--magenta);
+    box-shadow: var(--glow-m);
+    color: #fff;
+  }
+
+  .card-wa-btn svg {
+    flex-shrink: 0;
+  }
+
+  /* ── FIN BOTONES ── */
+
   .consoles-section {
     background: rgba(5,5,16,0.5);
     border-top: 1px solid var(--border);
@@ -517,7 +557,6 @@
     text-transform: uppercase;
   }
 
-  /* SPECS */
   .specs-row {
     display: flex;
     gap: 2rem;
@@ -556,7 +595,6 @@
     margin-top: 0.5rem;
   }
 
-  /* BOOKING */
   #reservas {
     max-width: 700px;
   }
@@ -584,8 +622,6 @@
     gap: 1.5rem;
     margin-bottom: 2rem;
   }
-
-  .booking-item {}
 
   .booking-item-label {
     font-family: 'Share Tech Mono', monospace;
@@ -649,7 +685,6 @@
     margin-bottom: 2rem;
   }
 
-  /* CONTACT / WHATSAPP */
   .whatsapp-btn {
     display: inline-flex;
     align-items: center;
@@ -675,7 +710,6 @@
     box-shadow: var(--glow-c);
   }
 
-  /* FOOTER */
   footer {
     position: relative;
     z-index: 1;
@@ -704,10 +738,7 @@
     letter-spacing: 0.1em;
   }
 
-  /* GLITCH EFFECT on title */
-  .glitch {
-    position: relative;
-  }
+  .glitch { position: relative; }
 
   .glitch::before,
   .glitch::after {
@@ -751,7 +782,6 @@
     99% { transform: translateX(2px) skewX(0deg); opacity: 0.7; }
   }
 
-  /* CORNER DECORATIONS */
   .corner-tl, .corner-tr, .corner-bl, .corner-br {
     position: absolute;
     width: 16px; height: 16px;
@@ -764,7 +794,6 @@
   .corner-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
   .corner-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
 
-  /* MOBILE */
   @media (max-width: 700px) {
     nav ul { display: none; }
     .services-grid { grid-template-columns: 1fr; }
@@ -779,7 +808,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">LA <span>PLAY</span>HOUSE</a>
   <ul>
@@ -790,7 +818,6 @@
   <a href="#reservas" class="nav-cta">Reservar</a>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
@@ -811,7 +838,6 @@
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
     <span class="ticker-item">PlayStation 5</span>
@@ -825,7 +851,6 @@
     <span class="ticker-item">Sala Zoom</span>
     <span class="ticker-item">Metegol</span>
     <span class="ticker-item">Butacas gamer</span>
-    <!-- duplicado para loop continuo -->
     <span class="ticker-item">PlayStation 5</span>
     <span class="ticker-item">Xbox Series</span>
     <span class="ticker-item">Nintendo Switch</span>
@@ -840,14 +865,14 @@
   </div>
 </div>
 
-<!-- SERVICIOS -->
 <section id="servicios">
   <p class="section-label">paquetes disponibles</p>
   <h2 class="section-title">Elegí tu <span>Combo</span></h2>
   <div class="section-divider"></div>
 
   <div class="services-grid">
-    <!-- Servicio basico -->
+
+    <!-- Servicio básico -->
     <div class="service-card featured">
       <div class="corner-tl"></div><div class="corner-tr"></div>
       <div class="corner-bl"></div><div class="corner-br"></div>
@@ -872,9 +897,18 @@
         <span class="price-amount">$600.000</span>
         <span class="price-label">evento</span>
       </div>
+      <!-- BOTÓN WHATSAPP BÁSICO -->
+      <a
+        href="https://wa.me/5492993260471?text=Hola!%20Me%20interesa%20el%20combo%20*B%C3%A1sico*%20(%24600.000)%20para%20reservar%20La%20PlayHouse.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8E%AE"
+        target="_blank"
+        class="card-wa-btn"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.527 5.847L0 24l6.305-1.504A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.044-1.394l-.36-.214-3.742.892.934-3.624-.235-.373A9.755 9.755 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        Quiero el Básico
+      </a>
     </div>
 
-    <!-- COMBO 1-->
+    <!-- Combo 1 -->
     <div class="service-card">
       <div class="corner-tl" style="border-color: var(--magenta)"></div>
       <div class="corner-tr" style="border-color: var(--magenta)"></div>
@@ -895,11 +929,20 @@
         <span class="price-amount" style="color: var(--magenta); text-shadow: var(--glow-m)">$700.000</span>
         <span class="price-label">evento</span>
       </div>
+      <!-- BOTÓN WHATSAPP COMBO 1 -->
+      <a
+        href="https://wa.me/5492993260471?text=Hola!%20Me%20interesa%20el%20*Combo%201%20-%20B%C3%A1sico%20%2B%20Snacks*%20(%24700.000)%20para%20reservar%20La%20PlayHouse.%20Incluye%20snacks%20y%20hasta%2012L%20de%20Coca-Cola.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8E%AE"
+        target="_blank"
+        class="card-wa-btn mag-btn"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.527 5.847L0 24l6.305-1.504A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.044-1.394l-.36-.214-3.742.892.934-3.624-.235-.373A9.755 9.755 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+        Quiero el Combo 1
+      </a>
     </div>
+
   </div>
 </section>
 
-<!-- ESTACIONES -->
 <div class="consoles-section" id="estaciones">
   <div class="consoles-inner">
     <p class="section-label">arsenal disponible</p>
@@ -966,7 +1009,6 @@
   </div>
 </div>
 
-<!-- RESERVAS -->
 <section id="reservas" style="max-width: 800px; margin: 0 auto;">
   <p class="section-label">asegurá tu fecha</p>
   <h2 class="section-title">Hacé tu <span>Reserva</span></h2>
@@ -1024,14 +1066,12 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p class="footer-logo">LA <span>PLAY</span>HOUSE</p>
   <p class="footer-copy">© 2026 LA PLAYHOUSE — Experiencia Gamer</p>
 </footer>
 
 <script>
-  // Smooth scroll con offset por nav fijo
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -1044,7 +1084,6 @@
     });
   });
 
-  // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1062,10 +1101,7 @@
     observer.observe(el);
   });
 
-  // Nav highlight on scroll
-  const sections = document.querySelectorAll('section[id], .consoles-section[id]');
   const navLinks = document.querySelectorAll('nav ul a');
-
   window.addEventListener('scroll', () => {
     let current = '';
     document.querySelectorAll('[id]').forEach(sec => {
