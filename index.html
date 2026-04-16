@@ -1,11 +1,1080 @@
-<header>
-  <div class="logo-container">
-    <img src="img/logo.png" alt="La Play House">
-  </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LA PLAYHOUSE – Experiencia Gamer</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan: #00f5ff;
+    --magenta: #ff00a8;
+    --yellow: #ffee00;
+    --dark: #050510;
+    --darker: #020208;
+    --mid: #0a0a1f;
+    --card: #0d0d25;
+    --border: rgba(0,245,255,0.25);
+    --glow-c: 0 0 20px rgba(0,245,255,0.5);
+    --glow-m: 0 0 20px rgba(255,0,168,0.5);
+  }
 
-  <nav>
-    <a href="#planes">Planes</a>
-    <a href="#gaming">Gaming</a>
-    <a href="#contacto">Reservas</a>
-  </nav>
-</header>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--darker);
+    color: #c0d8e8;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* SCANLINES overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* GRID BG */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(0,245,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(5,5,16,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--cyan);
+    text-shadow: var(--glow-c);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--magenta); text-shadow: var(--glow-m); }
+
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  nav ul a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: #7090a0;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--cyan); text-shadow: var(--glow-c); }
+
+  .nav-cta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--cyan);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--magenta);
+    box-shadow: var(--glow-m);
+  }
+
+  /* HERO */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 3rem;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,245,255,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,0,168,0.1) 0%, transparent 70%);
+    top: 30%; left: 70%;
+    transform: translate(-50%, -50%);
+    animation: pulse 5s ease-in-out infinite reverse;
+    pointer-events: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.7; }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--magenta);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: #fff;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title .line2 {
+    display: block;
+    color: var(--cyan);
+    text-shadow: var(--glow-c), 0 0 60px rgba(0,245,255,0.4);
+    font-size: clamp(2rem, 7vw, 5rem);
+  }
+
+  .hero-subtitle {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #7090a0;
+    max-width: 500px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--cyan);
+    border: 1px solid rgba(0,245,255,0.3);
+    padding: 0.4rem 1rem;
+    background: rgba(0,245,255,0.05);
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+
+  .badge.mag { color: var(--magenta); border-color: rgba(255,0,168,0.3); background: rgba(255,0,168,0.05); }
+  .badge.yel { color: var(--yellow); border-color: rgba(255,238,0,0.3); background: rgba(255,238,0,0.05); }
+
+  .hero-cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+
+  .btn-primary {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--cyan);
+    border: none;
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--magenta);
+    box-shadow: var(--glow-m);
+    color: #fff;
+  }
+
+  .btn-ghost {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    background: transparent;
+    border: 1px solid rgba(0,245,255,0.4);
+    padding: 1rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--cyan);
+    background: rgba(0,245,255,0.08);
+    box-shadow: var(--glow-c);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TICKER */
+  .ticker-wrap {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(0,245,255,0.04);
+    overflow: hidden;
+    padding: 0.7rem 0;
+  }
+
+  .ticker {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: ticker 25s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--cyan);
+    white-space: nowrap;
+    padding: 0 2rem;
+  }
+
+  .ticker-item::before { content: '◆ '; color: var(--magenta); }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTION BASE */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--magenta);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-title span { color: var(--cyan); }
+
+  .section-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+    margin: 1rem 0 3rem;
+  }
+
+  /* SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover { border-color: rgba(0,245,255,0.5); box-shadow: var(--glow-c); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-card.featured {
+    border-color: rgba(0,245,255,0.4);
+    background: linear-gradient(135deg, rgba(0,245,255,0.06), var(--card));
+  }
+
+  .service-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    background: rgba(0,245,255,0.1);
+    border: 1px solid rgba(0,245,255,0.2);
+    padding: 0.25rem 0.7rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  }
+
+  .service-tag.combo { color: var(--magenta); background: rgba(255,0,168,0.1); border-color: rgba(255,0,168,0.2); }
+
+  .service-name {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-size: 0.95rem;
+    color: #6080a0;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-includes {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .service-includes li {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    color: #7090a0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .service-includes li::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--cyan);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .service-includes li.noinclude { color: #5a4060; }
+  .service-includes li.noinclude::before { background: var(--magenta); }
+
+  .service-price {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .price-amount {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--cyan);
+    text-shadow: var(--glow-c);
+  }
+
+  .price-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: #5070a0;
+    letter-spacing: 0.1em;
+  }
+
+  /* CONSOLES */
+  .consoles-section {
+    background: rgba(5,5,16,0.5);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 5rem 0;
+  }
+
+  .consoles-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .consoles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .console-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: all 0.25s;
+    cursor: default;
+  }
+
+  .console-item:hover {
+    border-color: var(--magenta);
+    box-shadow: var(--glow-m);
+    transform: translateY(-4px);
+  }
+
+  .console-icon {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
+    display: block;
+    filter: grayscale(0.3);
+  }
+
+  .console-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    color: #8090b0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* SPECS */
+  .specs-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .spec-block {
+    flex: 1;
+    min-width: 200px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+  }
+
+  .spec-number {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--cyan);
+    text-shadow: var(--glow-c);
+    line-height: 1;
+  }
+
+  .spec-unit {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--magenta);
+    letter-spacing: 0.2em;
+    margin-top: 0.3rem;
+  }
+
+  .spec-label {
+    font-size: 0.9rem;
+    color: #6080a0;
+    margin-top: 0.5rem;
+  }
+
+  /* BOOKING */
+  #reservas {
+    max-width: 700px;
+  }
+
+  .booking-card {
+    background: var(--card);
+    border: 1px solid rgba(0,245,255,0.3);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .booking-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle at 100% 100%, rgba(255,0,168,0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .booking-item {}
+
+  .booking-item-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--magenta);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .booking-item-value {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  .booking-item-value small {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #6080a0;
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .booking-seña {
+    background: rgba(0,245,255,0.06);
+    border: 1px dashed rgba(0,245,255,0.3);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .seña-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: #5070a0;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .seña-amount {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--yellow);
+    text-shadow: 0 0 20px rgba(255,238,0,0.4);
+  }
+
+  .booking-note {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: #506070;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(0,245,255,0.2);
+    margin-bottom: 2rem;
+  }
+
+  /* CONTACT / WHATSAPP */
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--magenta);
+    color: #fff;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.5rem;
+    text-decoration: none;
+    clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .whatsapp-btn:hover {
+    background: var(--cyan);
+    color: var(--dark);
+    box-shadow: var(--glow-c);
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(2,2,8,0.9);
+  }
+
+  .footer-logo {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 0.9rem;
+    color: var(--cyan);
+    text-shadow: var(--glow-c);
+  }
+
+  .footer-logo span { color: var(--magenta); }
+
+  .footer-copy {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: #304050;
+    letter-spacing: 0.1em;
+  }
+
+  /* GLITCH EFFECT on title */
+  .glitch {
+    position: relative;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.95;
+  }
+
+  .glitch::before {
+    color: var(--magenta);
+    animation: glitch1 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translateX(-2px);
+    opacity: 0.7;
+  }
+
+  .glitch::after {
+    color: var(--cyan);
+    animation: glitch2 3s infinite;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    transform: translateX(2px);
+    opacity: 0.7;
+  }
+
+  @keyframes glitch1 {
+    0%, 90%, 100% { transform: translateX(-2px) skewX(0deg); opacity: 0; }
+    92% { transform: translateX(-4px) skewX(-2deg); opacity: 0.7; }
+    94% { transform: translateX(3px) skewX(1deg); opacity: 0.7; }
+    96% { transform: translateX(-2px) skewX(0deg); opacity: 0.7; }
+  }
+
+  @keyframes glitch2 {
+    0%, 93%, 100% { transform: translateX(2px) skewX(0deg); opacity: 0; }
+    95% { transform: translateX(5px) skewX(2deg); opacity: 0.7; }
+    97% { transform: translateX(-3px) skewX(-1deg); opacity: 0.7; }
+    99% { transform: translateX(2px) skewX(0deg); opacity: 0.7; }
+  }
+
+  /* CORNER DECORATIONS */
+  .corner-tl, .corner-tr, .corner-bl, .corner-br {
+    position: absolute;
+    width: 16px; height: 16px;
+    border-color: var(--cyan);
+    border-style: solid;
+  }
+
+  .corner-tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
+  .corner-tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+  .corner-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+  .corner-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+  /* MOBILE */
+  @media (max-width: 700px) {
+    nav ul { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-includes { grid-template-columns: 1fr; }
+    .booking-grid { grid-template-columns: 1fr; }
+    .specs-row { flex-direction: column; }
+    .hero-title { font-size: clamp(2.5rem, 12vw, 5rem); }
+    .booking-seña { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">LA <span>PLAY</span>HOUSE</a>
+  <ul>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#estaciones">Estaciones</a></li>
+    <li><a href="#reservas">Reservas</a></li>
+  </ul>
+  <a href="#reservas" class="nav-cta">Reservar</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <p class="hero-eyebrow">// experiencia gamer premium</p>
+  <h1 class="hero-title">
+    <span class="glitch" data-text="LA">LA</span>
+    <span class="line2">PLAYHOUSE</span>
+  </h1>
+  <p class="hero-subtitle">Viví un festejo diferente: jugá, competí y divertite en un espacio único.</p>
+  <div class="hero-badges">
+    <span class="badge">PS5 + Xbox + Switch</span>
+    <span class="badge mag">Hasta 45 personas</span>
+    <span class="badge yel">A partir de 9 años</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#reservas" class="btn-primary">Reservar ahora</a>
+    <a href="#servicios" class="btn-ghost">Ver servicios</a>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">PlayStation 5</span>
+    <span class="ticker-item">Xbox Series</span>
+    <span class="ticker-item">Nintendo Switch</span>
+    <span class="ticker-item">Simuladores de autos</span>
+    <span class="ticker-item">Consolas retro</span>
+    <span class="ticker-item">Arcade para dos</span>
+    <span class="ticker-item">20 joysticks</span>
+    <span class="ticker-item">Pantallas 50" a 70"</span>
+    <span class="ticker-item">Sala Zoom</span>
+    <span class="ticker-item">Metegol</span>
+    <span class="ticker-item">Butacas gamer</span>
+    <!-- duplicado para loop continuo -->
+    <span class="ticker-item">PlayStation 5</span>
+    <span class="ticker-item">Xbox Series</span>
+    <span class="ticker-item">Nintendo Switch</span>
+    <span class="ticker-item">Simuladores de autos</span>
+    <span class="ticker-item">Consolas retro</span>
+    <span class="ticker-item">Arcade para dos</span>
+    <span class="ticker-item">20 joysticks</span>
+    <span class="ticker-item">Pantallas 50" a 70"</span>
+    <span class="ticker-item">Sala Zoom</span>
+    <span class="ticker-item">Metegol</span>
+    <span class="ticker-item">Butacas gamer</span>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <p class="section-label">// paquetes disponibles</p>
+  <h2 class="section-title">Elegí tu <span>Combo</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="services-grid">
+    <!-- BÁSICO -->
+    <div class="service-card featured">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
+      <span class="service-tag">Servicio básico</span>
+      <h3 class="service-name">Básico</h3>
+      <p class="service-desc">Turnos de 2 horas y media. Todo lo necesario para disfrutar sin preocuparte.</p>
+      <ul class="service-includes">
+        <li>Invitaciones virtuales</li>
+        <li>Cocina + limpieza</li>
+        <li>Descartables</li>
+        <li>Ambiente climatizado</li>
+        <li>Té, café y mate</li>
+        <li>Heladera + exhibidora</li>
+        <li>Pava / microondas</li>
+        <li>Mesas y asientos</li>
+        <li>Musicalización gamer</li>
+        <li>Iluminación gamer</li>
+        <li class="noinclude">No incluye comida</li>
+        <li class="noinclude">No incluye bebidas</li>
+      </ul>
+      <div class="service-price">
+        <span class="price-amount">$600.000</span>
+        <span class="price-label">/ evento</span>
+      </div>
+    </div>
+
+    <!-- COMBO 1 -->
+    <div class="service-card">
+      <div class="corner-tl" style="border-color: var(--magenta)"></div>
+      <div class="corner-tr" style="border-color: var(--magenta)"></div>
+      <div class="corner-bl" style="border-color: var(--magenta)"></div>
+      <div class="corner-br" style="border-color: var(--magenta)"></div>
+      <span class="service-tag combo">Combo 1 ★</span>
+      <h3 class="service-name">Básico + Snacks</h3>
+      <p class="service-desc">Todo lo del servicio básico más snacks y bebidas incluidas.</p>
+      <ul class="service-includes">
+        <li>Todo del básico</li>
+        <li>Chizitos</li>
+        <li>Papas fritas</li>
+        <li>Puflitos</li>
+        <li>Tutucas</li>
+        <li>Hasta 12L de Coca-Cola</li>
+      </ul>
+      <div class="service-price">
+        <span class="price-amount" style="color: var(--magenta); text-shadow: var(--glow-m)">$700.000</span>
+        <span class="price-label">/ evento</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTACIONES -->
+<div class="consoles-section" id="estaciones">
+  <div class="consoles-inner">
+    <p class="section-label">// arsenal disponible</p>
+    <h2 class="section-title">Estaciones de <span>Juego</span></h2>
+    <div class="section-divider"></div>
+
+    <div class="consoles-grid">
+      <div class="console-item">
+        <span class="console-icon">🎮</span>
+        <p class="console-name">PlayStation 5</p>
+      </div>
+      <div class="console-item">
+        <span class="console-icon">🕹️</span>
+        <p class="console-name">Xbox</p>
+      </div>
+      <div class="console-item">
+        <span class="console-icon">🍄</span>
+        <p class="console-name">Nintendo Switch</p>
+      </div>
+      <div class="console-item">
+        <span class="console-icon">🏎️</span>
+        <p class="console-name">Simuladores</p>
+      </div>
+      <div class="console-item">
+        <span class="console-icon">👾</span>
+        <p class="console-name">Consolas Retro</p>
+      </div>
+      <div class="console-item">
+        <span class="console-icon">🕹️</span>
+        <p class="console-name">Arcade 2P</p>
+      </div>
+      <div class="console-item">
+        <span class="console-icon">⚽</span>
+        <p class="console-name">Metegol</p>
+      </div>
+      <div class="console-item">
+        <span class="console-icon">🎯</span>
+        <p class="console-name">Sala Zoom</p>
+      </div>
+    </div>
+
+    <div class="specs-row">
+      <div class="spec-block">
+        <div class="spec-number">20</div>
+        <div class="spec-unit">// JOYSTICKS</div>
+        <div class="spec-label">Controladores disponibles</div>
+      </div>
+      <div class="spec-block">
+        <div class="spec-number">70"</div>
+        <div class="spec-unit">// PANTALLAS</div>
+        <div class="spec-label">De 50" a 70" pulgadas</div>
+      </div>
+      <div class="spec-block">
+        <div class="spec-number">45</div>
+        <div class="spec-unit">// PERSONAS</div>
+        <div class="spec-label">Capacidad máxima</div>
+      </div>
+      <div class="spec-block">
+        <div class="spec-number">9+</div>
+        <div class="spec-unit">// EDAD MÍNIMA</div>
+        <div class="spec-label">A partir de 9 años</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESERVAS -->
+<section id="reservas" style="max-width: 800px; margin: 0 auto;">
+  <p class="section-label">// asegurá tu fecha</p>
+  <h2 class="section-title">Hacé tu <span>Reserva</span></h2>
+  <div class="section-divider"></div>
+
+  <div class="booking-card">
+    <div class="corner-tl"></div><div class="corner-tr"></div>
+    <div class="corner-bl"></div><div class="corner-br"></div>
+
+    <div class="booking-grid">
+      <div class="booking-item">
+        <p class="booking-item-label">// duración del turno</p>
+        <p class="booking-item-value">2hs 30min
+          <small>Por evento reservado</small>
+        </p>
+      </div>
+      <div class="booking-item">
+        <p class="booking-item-label">// capacidad</p>
+        <p class="booking-item-value">Hasta 45 personas
+          <small>A partir de 9 años</small>
+        </p>
+      </div>
+      <div class="booking-item">
+        <p class="booking-item-label">// básico desde</p>
+        <p class="booking-item-value" style="color: var(--cyan);">$600.000
+          <small>Sin comida ni bebidas</small>
+        </p>
+      </div>
+      <div class="booking-item">
+        <p class="booking-item-label">// combo 1 desde</p>
+        <p class="booking-item-value" style="color: var(--magenta);">$700.000
+          <small>Incluye snacks + bebidas</small>
+        </p>
+      </div>
+    </div>
+
+    <div class="booking-seña">
+      <div>
+        <p class="seña-label">// seña para reservar fecha</p>
+        <p style="font-family: 'Rajdhani'; font-size: 0.9rem; color: #5070a0; margin-top: 0.2rem;">Se abona para confirmar la fecha</p>
+      </div>
+      <p class="seña-amount">$100.000</p>
+    </div>
+
+    <p class="booking-note">
+      Las fechas se reservan con una seña de $100.000<br>
+      Los cumpleaños crecieron... ahora se juegan 🎮<br>
+      Consultá disponibilidad por WhatsApp o redes
+    </p>
+
+    <a href="https://wa.me/5492xxxxxxxxx?text=Hola!%20Quiero%20reservar%20La%20PlayHouse" class="whatsapp-btn" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.527 5.847L0 24l6.305-1.504A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.044-1.394l-.36-.214-3.742.892.934-3.624-.235-.373A9.755 9.755 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+      Reservar por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">LA <span>PLAY</span>HOUSE</p>
+  <p class="footer-copy">© 2025 LA PLAYHOUSE — Experiencia Gamer</p>
+</footer>
+
+<script>
+  // Smooth scroll con offset por nav fijo
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const y = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .console-item, .spec-block, .booking-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s';
+    observer.observe(el);
+  });
+
+  // Nav highlight on scroll
+  const sections = document.querySelectorAll('section[id], .consoles-section[id]');
+  const navLinks = document.querySelectorAll('nav ul a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    document.querySelectorAll('[id]').forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current ? 'var(--cyan)' : '';
+    });
+  });
+</script>
+</body>
+</html>
