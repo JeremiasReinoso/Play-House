@@ -1,0 +1,14 @@
+.logo-container img {
+  height: 60px;
+  filter: drop-shadow(0 0 8px #fff) 
+          drop-shadow(0 0 15px #f0f)
+          drop-shadow(0 0 25px #0ff);
+  transition: 0.3s;
+}
+
+.logo-container img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px #fff)
+          drop-shadow(0 0 30px #f0f)
+          drop-shadow(0 0 40px #0ff);
+}
