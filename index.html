@@ -88,6 +88,17 @@
     text-decoration: none;
   }
 
+  .nav-logo img {
+    height: 36px;
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .nav-logo img:hover {
+    opacity: 0.8;
+  }
+
   .nav-logo span { color: var(--magenta); text-shadow: var(--glow-m); }
 
   nav ul {
@@ -850,7 +861,7 @@
 <body>
 
 <nav>
-  <a href="#hero" class="nav-logo">LA <span>PLAY</span>HOUSE</a>
+  <a href="#hero" class="nav-logo"><img src="logos/LogoPlayHouse.png" alt="PlayHouse" style="height: 40px; display: block;"></a>
   <ul>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#estaciones">Estaciones</a></li>
