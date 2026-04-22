@@ -352,9 +352,28 @@
   .section-title span { color: var(--cyan); }
 
   .section-divider {
-    width: 60px; height: 2px;
-    background: linear-gradient(90deg, var(--cyan), transparent);
+    width: 180px;
+    height: 3px;
     margin: 1rem 0 3rem;
+    background: rgba(0,245,255,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), var(--cyan), transparent);
+    animation: loadbar 1.6s linear infinite;
+    box-shadow: 0 0 10px var(--cyan), 0 0 20px rgba(0,245,255,0.4);
+  }
+
+  @keyframes loadbar {
+    0%   { left: -60%; }
+    100% { left: 160%; }
   }
 
   .services-grid {
